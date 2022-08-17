@@ -1,0 +1,14 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "^7.4",
+        "nesbot/carbon": "^2.61",
+        "lodash-php/lodash-php": "^0.0.7"
+    },
+    "autoload": {
+
+        "psr-4": {
+            "GSL\\AttackPortal\\":"src"
+        }
+
+    }
+}
