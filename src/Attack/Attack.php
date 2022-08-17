@@ -10,6 +10,7 @@
         private string $ipAddress;
         private int $maxPeak;
         private int $volume;
+        private int $timestampStarted;
 
         public function __construct(
 
@@ -18,7 +19,8 @@
             int $maxPeak,
             int $volume,
             string $description,
-            string $status
+            string $status,
+            int $timestampStarted
 
         ) {
 
@@ -28,6 +30,7 @@
             $this->volume = $volume;
             $this->description = $description;
             $this->status = $status;
+            $this->timestampStarted = $timestampStarted;
 
         }
 
@@ -72,6 +75,12 @@
 
         }
 
+        public function getTimestampStarted(): int {
+
+            return $this->timestampStarted;
+
+        }
+
         public static function create(
 
             string $ipAddress,
@@ -79,7 +88,8 @@
             int $maxPeak,
             int $volume,
             string $description,
-            string $status
+            string $status,
+            int $timestampStarted
 
         ): static {
 
@@ -90,7 +100,8 @@
                 $maxPeak,
                 $volume,
                 $description,
-                $status
+                $status,
+                $timestampStarted
 
             );
 

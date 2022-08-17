@@ -61,7 +61,8 @@
                         $result['max_peak'],
                         $result['volume'],
                         $result['description'],
-                        $result['status']
+                        $result['status'],
+                        $result['start_time'] / 1000
 
                     );
 

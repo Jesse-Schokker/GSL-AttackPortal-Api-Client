@@ -22,7 +22,7 @@
 
     $AttackCollection = Attack\Attacks::getInDateRange(
 
-        new Carbon('2022-08-01 15:25:17'),
+        new Carbon('2022-08-13 15:25:17'),
         new Carbon('2022-08-17 16:49:58')
 
     );
@@ -36,7 +36,8 @@
             'maxPeak' => $Attack->getMaxPeak(),
             'volume' => $Attack->getVolume(),
             'description' => $Attack->getDescription(),
-            'status' => $Attack->getStatus()
+            'status' => $Attack->getStatus(),
+            'timestampStarted' => $Attack->getTimestampStarted()
 
         ]);
 
