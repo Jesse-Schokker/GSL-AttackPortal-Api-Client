@@ -1,24 +1,9 @@
 <?php
 
-    require_once '../vendor/autoload.php';
+    require_once './initializer/Initializer.php';
 
     use Carbon\Carbon;
-    use GSL\AttackPortal\Authentication;
     use GSL\AttackPortal\Attack;
-
-    $emailAddress = $argv[1];
-    $password = $argv[2];
-
-    Authentication\Authentication::authenticate(
-
-        Authentication\AuthenticationCredentials::create(
-
-            $emailAddress,
-            $password
-
-        )
-
-    );
 
     $AttackCollection = Attack\Attacks::getInDateRange(
 

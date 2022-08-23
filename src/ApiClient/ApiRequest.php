@@ -43,7 +43,7 @@
 
             string $method,
             string $uri,
-            array $requestOptions
+            array $requestOptions = []
 
         ): void {
 

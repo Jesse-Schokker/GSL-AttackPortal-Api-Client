@@ -5,6 +5,7 @@
     use DateTime;
     use function _\map;
     use GSL\AttackPortal\ApiClient;
+    use GSL\AttackPortal\Asset;
 
     class Attacks {
 
@@ -69,6 +70,53 @@
                 })
 
             );
+
+        }
+
+        /**
+         * @return Asset\TopAttackedAsset[]
+         */
+        public static function getTopAttackedAssetsInDateRange(
+
+            DateTime $TimeStart,
+            DateTime $TimeEnd,
+            array $options = []
+
+        ): array {
+
+            $Client = ApiClient\ApiClient::createRequest();
+
+            $queryParameters = [
+
+                'start' => $TimeStart->format('Y-m-d H:m:s'),
+                'end' => $TimeEnd->format('Y-m-d H:m:s')
+
+            ];
+
+            $Client->request(
+
+                'GET',
+                'api/get_top_attacked_ip',
+                [
+
+                    'query' => $queryParameters
+
+                ]
+
+            );
+
+            $result = $Client->getResponse()->getAsJson();
+
+            return map($result['results'], static function( array $result ): Asset\TopAttackedAsset {
+
+                return Asset\TopAttackedAsset::create(
+
+                    $result['ip_address'],
+                    $result['attack_count']
+
+                );
+
+            });
 
         }
 

@@ -2,6 +2,8 @@
 
     namespace GSL\AttackPortal\Authentication\Token;
 
+    use GSL\AttackPortal\ApiClient\ApiClient;
+
     class AuthenticationToken {
 
         private string $token;
@@ -9,6 +11,21 @@
         public function __construct( string $token ) {
 
             $this->token = $token;
+
+        }
+
+        public function refresh(): void {
+
+            $ApiRequest = ApiClient::createRequest();
+
+            $ApiRequest->setAuthenticationToken( $this );
+
+            $ApiRequest->request(
+
+                'GET',
+                'refresh'
+
+            );
 
         }
 
